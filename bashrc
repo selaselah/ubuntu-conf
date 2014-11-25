@@ -112,3 +112,15 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# find function
+cppsearch () {
+  case $# in
+    1) base_dir=.; pattern=$1;;
+    2) base_dir=$1; pattern=$2;;
+    *) echo "Usage: find [path] pattern" && return ;;
+  esac
+  echo "start search..."
+  find $base_dir -name '*.h' -o -name '*.cpp' -o -name '*.hpp' -o -name '*.cxx' \
+    -o -name '*.c' | xargs grep -H --color "$pattern"
+}
