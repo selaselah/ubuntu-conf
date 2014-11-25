@@ -58,7 +58,7 @@ set laststatus=2 "Always show the status line
 set t_Co=256
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" tab
+" tab & indent option
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " tabstop = ts
 " softtabstop = sts
@@ -68,6 +68,7 @@ autocmd FileType cpp set ts=4 sts=4 sw=4 et
 autocmd FileType cmake set ts=2 sts=2 sw=2 et
 autocmd FileType sh set ts=2 sts=2 sw=2 et
 
+set cinoptions=g0
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin setting
 """"""""""""""""""""""""""""""""""""""""""""""""""
