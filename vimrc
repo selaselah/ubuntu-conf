@@ -53,7 +53,15 @@ filetype plugin indent on    " required
 "filetype plugin on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" miscellaneous
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a
+set incsearch
+set hlsearch
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Status line config
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2 "Always show the status line
 set t_Co=256
 
@@ -68,7 +76,7 @@ autocmd FileType cpp set ts=4 sts=4 sw=4 et
 autocmd FileType cmake set ts=2 sts=2 sw=2 et
 autocmd FileType sh set ts=2 sts=2 sw=2 et
 
-set cinoptions=g0
+set cinoptions=g0,:0
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin setting
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -81,3 +89,6 @@ let g:airline_powerline_fonts=1
 let g:airline_detect_whitespace=0 
 " set vim statusbar theme
 let g:airline_theme="molokai"
+
+" YouCompleteMe
+let g:ycm_confirm_extra_conf = 0
