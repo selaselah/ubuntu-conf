@@ -59,6 +59,9 @@ set mouse=a
 set incsearch
 set hlsearch
 
+set colorcolumn=81
+highlight ColorColumn ctermbg=52 guibg=#5f0000
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Status line config
 """"""""""""""""""""""""""""""""""""""""""""""""""
