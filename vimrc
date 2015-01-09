@@ -45,6 +45,8 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-markdown'
 " vimdeck depend on it
 Plugin 'SyntaxRange'
+" python indent
+Plugin 'hynek/vim-python-pep8-indent'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,6 +60,8 @@ filetype plugin indent on    " required
 set mouse=a
 set incsearch
 set hlsearch
+
+colorscheme molokai
 
 set colorcolumn=81
 highlight ColorColumn ctermbg=52 guibg=#5f0000
@@ -87,6 +91,7 @@ autocmd FileType sh set ts=2 sts=2 sw=2 et
 set cinoptions=:0,g0,N-s
 
 autocmd FileType c,cpp set foldmethod=marker
+autocmd FileType python set foldmethod=indent
 
 fu! CustomFoldText()
   " get first non-blank line
@@ -108,29 +113,28 @@ fu! CustomFoldText()
     let lastline = substitute(getline(ls), '^\s*', "", '')
   endif
   " for c type commenting remove the foldmarker
-  "let firstline = substitute(firstline, '\/\/ {{{', "", 'g')
-  "let firstline = substitute(firstline, '\/\/{{{', "", 'g')
-  let firstline = substitute(firstline, '\/\*{{{\*\/', "", 'g')
-  "let lastline = substitute(lastline, '\/\/ }}}', "", 'g')
-  "let lastline = substitute(lastline, '\/\/}}}', "", 'g')
-  let lastline = substitute(lastline, '\/\*}}}\*\/', "", 'g')
+  let firstline = substitute(firstline, '\s*\/\*{{{\*\/\s*', "", 'g')
+  let lastline = substitute(lastline, '\s*\/\*.*\*\/\s*', "", 'g')
+  let lastline = substitute(lastline, '\s*\/\/.*', "", 'g')
   " get the content width
   " let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
   let foldSize = 1 + v:foldend - v:foldstart
-  let foldSizeStr = foldSize . " lines "
-  let foldLevelStr = repeat("+–", v:foldlevel)
+  let foldSizeStr = " ".foldSize." ln "
+  let foldLevelStr = repeat("+", v:foldlevel)
   let tailSize = strwidth(foldSizeStr.foldLevelStr)
-  if strwidth(firstline)+tailSize > 80 - 3 - 5 - 3
-    let firstline = strpart(firstline, 0, 80-3-tailSize)
+  let totalSize = strwidth(firstline) + 2 + strwidth(lastline) + tailSize
+  if totalSize > 80
+    " +75 means -4(len of " .. ") -1(len of tail) +80
+    let firstline = strpart(firstline, 0, strwidth(firstline)+75-totalSize)
+        \." .. ".strpart(firstline, strwidth(firstline)-1)
+    let expansionString = "  "
+  else
+    let expansionString = " ".repeat(".", 80-totalSize)." "
   endif
-  if strwidth(lastline) > 5
-    let lastline = strpart(lastline, strwidth(lastline)-5)
-  endif
-  let expansionString = repeat(".", 80 - 7 - tailSize - strwidth(firstline) - strwidth(lastline))
-  return firstline." ".expansionString." ".lastline." ... ".foldSizeStr.foldLevelStr
+  return firstline.expansionString.lastline.foldSizeStr.foldLevelStr
 endf
+autocmd FileType c,cpp set foldtext=CustomFoldText()
 
-set foldtext=CustomFoldText()
 highlight Folded ctermbg=0 ctermfg=220 guibg=#000000 guifg=blue
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin setting
