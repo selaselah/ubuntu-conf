@@ -124,3 +124,6 @@ cppsearch () {
   find $base_dir -name '*.h' -o -name '*.cpp' -o -name '*.hpp' -o -name '*.cxx' \
     -o -name '*.c' | xargs grep -H --color "$pattern"
 }
+
+alias curtime='date +"%Y-%m-%d %H:%M:%S"'
+alias curdate='date +"%H:%M:%S"'
