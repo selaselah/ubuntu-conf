@@ -61,10 +61,15 @@ set mouse=a
 set incsearch
 set hlsearch
 
-colorscheme molokai
-
 set colorcolumn=81
 highlight ColorColumn ctermbg=52 guibg=#5f0000
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" syntax hightlighting
+""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme molokai
+autocmd FileType cpp syn keyword cType string vector map
+autocmd FileType cpp syn keyword cConstant cin cout cerr endl
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Status line config
@@ -79,16 +84,20 @@ set t_Co=256
 " softtabstop = sts
 " shiftwidth = sw
 " expandtab = et
-autocmd FileType c,cpp set ts=4 sts=4 sw=4 et
+autocmd FileType c set ts=4 sts=4 sw=4 et
+autocmd FileType cpp set ts=2 sts=2 sw=2 et
 autocmd FileType cmake set ts=2 sts=2 sw=2 et
 autocmd FileType sh set ts=2 sts=2 sw=2 et
+autocmd FileType vim set ts=2 sts=2 sw=2 et
 
 " :N Place case labels N characters from the indent of the switch().
 " gN Place C++ scope declarations N characters from the indent of the
 "    block they are in.
+" hN Place statements occurring after a C++ scope declaration N
+"    characters from the indent of the label.  (default 'shiftwidth').
 " NN Indent inside C++ namespace N characters extra compared to a
 "    normal block.  (default 0).
-set cinoptions=:0,g0,N-s
+autocmd FileType cpp set cinoptions=:0,g0.5s,h0.5s,N-s
 
 autocmd FileType c,cpp set foldmethod=marker
 autocmd FileType python set foldmethod=indent
