@@ -99,13 +99,16 @@ autocmd FileType sh set ts=2 sts=2 sw=2 et
 autocmd FileType vim set ts=2 sts=2 sw=2 et
 
 " :N Place case labels N characters from the indent of the switch().
+"    (default 'shiftwidth').
+" =N Place statements occurring after a case label N characters from
+"    the indent of the label.  (default 'shiftwidth').
 " gN Place C++ scope declarations N characters from the indent of the
 "    block they are in.
 " hN Place statements occurring after a C++ scope declaration N
 "    characters from the indent of the label.  (default 'shiftwidth').
 " NN Indent inside C++ namespace N characters extra compared to a
 "    normal block.  (default 0).
-autocmd FileType cpp set cinoptions=:0,g0.5s,h0.5s,N-s
+autocmd FileType cpp set cinoptions=:0.5s,=0.5s,g0.5s,h0.5s,N-s
 
 autocmd FileType c,cpp set foldmethod=marker
 autocmd FileType python set foldmethod=indent
