@@ -64,6 +64,14 @@ set hlsearch
 set colorcolumn=81
 highlight ColorColumn ctermbg=52 guibg=#5f0000
 
+" date & time funtion
+fu! CurTime()
+  call setline(line('.'), getline('.') . ' ' . strftime('%Y-%m-%d %H:%M:%S'))
+endf
+fu! CurDate()
+  call setline(line('.'), getline('.') . ' ' . strftime('%Y-%m-%d'))
+endf
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " syntax hightlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,3 +168,4 @@ let g:airline_theme="molokai"
 
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
+
