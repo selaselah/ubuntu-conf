@@ -76,9 +76,52 @@ endf
 " syntax hightlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme molokai
-autocmd FileType cpp syn keyword cType string vector map
-autocmd FileType cpp syn keyword cConstant cin cout cerr endl
 
+" string -----------------------------------------
+autocmd FileType cpp syn keyword cppType basic_string
+autocmd FileType cpp syn keyword cppType string wstring u16string u32string
+" container --------------------------------------
+" sequence container
+autocmd FileType cpp syn keyword cppType array vector deque forward_list list
+" associative container
+autocmd FileType cpp syn keyword cppType set map multiset multimap string
+" unordered associative container
+autocmd FileType cpp syn keyword cppType unordered_set unordered_map
+      \unordered_multiset unordered_multimap
+" container adaptors
+autocmd FileType cpp syn keyword cppType stack queue priority_queue
+" I/O --------------------------------------------
+" I/O abstraction
+autocmd FileType cpp syn keyword cppType ios_base basic_ios basic_streambuf
+      \basic_istream basic_ostream basic_iostream
+autocmd FileType cpp syn keyword cppType ios wios streambuf wstreambuf
+autocmd FileType cpp syn keyword cppType istream wistream ostream wostream 
+      \iostream wiostream
+" file I/O
+autocmd FileType cpp syn keyword cppType basic_filebuf basic_ifstream
+      \basic_ofstream basic_fstream
+autocmd FileType cpp syn keyword cppType filebuf wfilebuf
+autocmd FileType cpp syn keyword cppType ifstream wifstream ofstream wofstream
+      \fstream wfstream
+" string I/O
+autocmd FileType cpp syn keyword cppType basic_stringbuf basic_istringstream
+      \basic_ostringstream basic_stringstream
+autocmd FileType cpp syn keyword cppType stringbuf wstringbuf
+autocmd FileType cpp syn keyword cppType istringstream wistringstream
+      \ostringstream wostringstream stringstream wstringstream
+" array I/O
+autocmd FileType cpp syn keyword cppType strstreambuf istrstream ostrstream
+      \strstream
+" predefined
+autocmd FileType cpp syn keyword cppIdentifier cin wcin cout wcout cerr wcerr
+      \clog wclog
+" type
+autocmd FileType cpp syn keyword cppType streamoff streamsize fpos
+autocmd FileType cpp syn keyword cppType streampos u16streampos u32streampos
+
+autocmd FileType cpp syn keyword cppOperator hex dec boolalpha noboolalpha endl
+
+highlight default link cppIdentifier Identifier
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Status line config
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,6 +198,19 @@ fu! CustomFoldText()
 endf
 autocmd FileType c,cpp set foldtext=CustomFoldText()
 
+" Don't indent namespace and template
+fu! CppNoTemplateIndent()
+  let l:cline_num = line('.')
+  let l:orig_indent = cindent(l:cline_num)
+  if l:orig_indent == 0 | return 0 | endif
+  let l:pline_num = prevnonblank(l:cline_num - 1)
+  let l:pline = getline(l:pline_num)
+  if l:pline =~# '^\s*template' | return l:pline_indent | endif
+  return l:orig_indent
+endf
+"autocmd FileType cpp setlocal indentexpr=CppTemplateIndent()
+
+" color folded
 highlight Folded ctermbg=0 ctermfg=220 guibg=#000000 guifg=blue
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin setting
