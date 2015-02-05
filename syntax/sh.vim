@@ -179,7 +179,7 @@ syn match      shRedir	"\d<<-\="
 
 " Operators: {{{1
 " ==========
-syn match   shOperator	"<<\|>>"		contained
+" syn match   shOperator	"<<\|>>"		contained
 syn match   shOperator	"[!&;|]"		contained
 syn match   shOperator	"\[[[^:]\|\]]"		contained
 syn match   shOperator	"!\=="		skipwhite nextgroup=shPattern
