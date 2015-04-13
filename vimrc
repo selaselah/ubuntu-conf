@@ -47,6 +47,8 @@ Plugin 'tpope/vim-markdown'
 Plugin 'SyntaxRange'
 " python indent
 Plugin 'hynek/vim-python-pep8-indent'
+" csv
+Plugin 'chrisbra/csv.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -140,6 +142,7 @@ autocmd FileType cpp set ts=2 sts=2 sw=2 et
 autocmd FileType cmake set ts=2 sts=2 sw=2 et
 autocmd FileType sh set ts=2 sts=2 sw=2 et
 autocmd FileType vim set ts=2 sts=2 sw=2 et
+autocmd FileType perl set ts=2 sts=2 sw=2 et
 
 " :N Place case labels N characters from the indent of the switch().
 "    (default 'shiftwidth').
@@ -151,7 +154,7 @@ autocmd FileType vim set ts=2 sts=2 sw=2 et
 "    characters from the indent of the label.  (default 'shiftwidth').
 " NN Indent inside C++ namespace N characters extra compared to a
 "    normal block.  (default 0).
-autocmd FileType cpp set cinoptions=:0.5s,=0.5s,g0.5s,h0.5s,N-s
+autocmd FileType cpp set cinoptions=:0.5s,=0.5s,g0.5s,h0.5s,N-s,i-s
 
 autocmd FileType c,cpp set foldmethod=marker
 autocmd FileType python set foldmethod=indent
@@ -228,3 +231,5 @@ let g:airline_theme="molokai"
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
 
+" Syntastic
+let g:syntastic_python_python_exec = '/usr/bin/env python3'
