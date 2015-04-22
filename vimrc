@@ -49,6 +49,8 @@ Plugin 'SyntaxRange'
 Plugin 'hynek/vim-python-pep8-indent'
 " csv
 Plugin 'chrisbra/csv.vim'
+" ansi color
+Plugin 'powerman/vim-plugin-AnsiEsc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -143,6 +145,7 @@ autocmd FileType cmake set ts=2 sts=2 sw=2 et
 autocmd FileType sh set ts=2 sts=2 sw=2 et
 autocmd FileType vim set ts=2 sts=2 sw=2 et
 autocmd FileType perl set ts=2 sts=2 sw=2 et
+autocmd FileType markdown set ts=4 sts=4 sw=4 et
 
 " :N Place case labels N characters from the indent of the switch().
 "    (default 'shiftwidth').
@@ -223,8 +226,8 @@ highlight Folded ctermbg=0 ctermfg=220 guibg=#000000 guifg=blue
 " https://github.com/bling/vim-airline
 " Let airline plugin use the arrow effect of powerline
 let g:airline_powerline_fonts=1
-" *trailing[164] is part of the whitespace extension, disable it
-let g:airline_detect_whitespace=0 
+" *trailing[164] is part of the airline-whitespace extension, disable it
+let g:airline#extensions#whitespace#enabled = 0
 " set vim statusbar theme
 let g:airline_theme="molokai"
 
