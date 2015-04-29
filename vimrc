@@ -51,6 +51,8 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'chrisbra/csv.vim'
 " ansi color
 Plugin 'powerman/vim-plugin-AnsiEsc'
+" thrift
+Plugin 'solarnz/thrift.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -146,6 +148,7 @@ autocmd FileType sh set ts=2 sts=2 sw=2 et
 autocmd FileType vim set ts=2 sts=2 sw=2 et
 autocmd FileType perl set ts=2 sts=2 sw=2 et
 autocmd FileType markdown set ts=4 sts=4 sw=4 et
+autocmd FileType thrift set ts=2 sts=2 sw=2 et
 
 " :N Place case labels N characters from the indent of the switch().
 "    (default 'shiftwidth').
