@@ -67,6 +67,7 @@ set mouse=a
 set incsearch
 set hlsearch
 
+" set vertical bar on col 81
 set colorcolumn=81
 highlight ColorColumn ctermbg=52 guibg=#5f0000
 
@@ -82,6 +83,14 @@ endf
 " syntax hightlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme molokai
+set t_ZH=[3m
+set t_ZR=[23m
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+let g:load_doxygen_syntax=1
+let g:doxygen_enhanced_color=1
 
 " string -----------------------------------------
 autocmd FileType cpp syn keyword cppType basic_string
