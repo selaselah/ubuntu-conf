@@ -79,6 +79,12 @@ fu! CurDate()
   call setline(line('.'), getline('.') . ' ' . strftime('%Y-%m-%d'))
 endf
 
+" move swp file in .vim/direcotry
+if filewritable(".") && ! filewritable("~/.vim/directory")
+  silent execute '!umask 002; mkdir -p ~/.vim/directory'
+endif
+set directory=~/.vim/directory//
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " syntax hightlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""
