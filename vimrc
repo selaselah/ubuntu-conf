@@ -53,6 +53,10 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'powerman/vim-plugin-AnsiEsc'
 " thrift
 Plugin 'solarnz/thrift.vim'
+" rust
+Plugin 'rust-lang/rust.vim'
+" toml
+Plugin 'cespare/vim-toml'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
