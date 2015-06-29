@@ -182,7 +182,7 @@ autocmd FileType thrift set ts=2 sts=2 sw=2 et
 autocmd FileType cpp set cinoptions=:0.5s,=0.5s,g0.5s,h0.5s,N-s,i-s
 
 autocmd FileType c,cpp set foldmethod=marker
-autocmd FileType python set foldmethod=indent
+autocmd FileType python set foldmethod=indent foldlevel=19
 
 fu! CustomFoldText()
   " get first non-blank line
