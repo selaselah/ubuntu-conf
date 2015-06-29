@@ -470,9 +470,9 @@ endif
           " SynColor doxygenBody cterm=italic ctermfg=59 guifg=#7E8E91 gui=italic
           
           " SynColor doxygenSpecialTypeOnelineDesc cterm=bold ctermfg=Red guifg=firebrick3 gui=bold
-          SynColor doxygenSpecialTypeOnelineDesc cterm=bold ctermfg=Red guifg=firebrick3 gui=bold
+          SynColor doxygenSpecialTypeOnelineDesc ctermfg=94 guifg=firebrick3 gui=bold
           " SynColor doxygenBOther cterm=bold ctermfg=Magenta guifg=#aa50aa gui=bold
-          SynColor doxygenBOther cterm=bold ctermfg=Red guifg=#aa50aa gui=bold
+          SynColor doxygenBOther ctermfg=0 guifg=#aa50aa gui=bold
 
           " SynColor doxygenParam ctermfg=LightGray guifg=LightGray
           SynColor doxygenParam ctermfg=0 guifg=Black
