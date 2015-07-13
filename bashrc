@@ -134,8 +134,20 @@ cssearch () {
   echo "start search..."
   find $base_dir -name '*.cs' | xargs grep -H --color "$pattern"
 }
+
+pysearch () {
+  case $# in
+    1) base_dir=.; pattern=$1;;
+    2) base_dir=$1; pattern=$2;;
+    *) echo "Usage: find [path] pattern" && return ;;
+  esac
+  echo "start search..."
+  find $base_dir -name '*.py' | xargs grep -H --color "$pattern"
+}
+
 alias curtime='date +"%Y-%m-%d %H:%M:%S"'
 alias curdate='date +"%H:%M:%S"'
+alias cd='cd -P'
 
 # colored manpage
 # mb   Start blinking, no effect
