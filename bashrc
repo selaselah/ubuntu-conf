@@ -180,3 +180,14 @@ man() {
     LESS_TERMCAP_ZW=$(tput rsupm) \
     man -a "$@"
 }
+# for java
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+
+# for hadoop
+export HADOOP_HOME=$HOME/opt/hadoop-2.7.1
+export PATH=$PATH:$HADOOP_HOME/bin
+
+# for pig
+export PIG_HOME=$HOME/opt/pig-0.15.0
+export PATH=$PATH:$PIG_HOME/bin
+
