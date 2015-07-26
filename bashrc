@@ -134,5 +134,60 @@ cssearch () {
   echo "start search..."
   find $base_dir -name '*.cs' | xargs grep -H --color "$pattern"
 }
+
+pysearch () {
+  case $# in
+    1) base_dir=.; pattern=$1;;
+    2) base_dir=$1; pattern=$2;;
+    *) echo "Usage: find [path] pattern" && return ;;
+  esac
+  echo "start search..."
+  find $base_dir -name '*.py' | xargs grep -H --color "$pattern"
+}
+
 alias curtime='date +"%Y-%m-%d %H:%M:%S"'
 alias curdate='date +"%H:%M:%S"'
+alias cd='cd -P'
+
+# colored manpage
+# mb   Start blinking, no effect
+# md   Start bold mode, for subtitle and bold
+# me   End all mode like so, us, mb, md and mr
+# mh   Start half bright mode
+# mk   Dark mode (Characters invisible)
+# ML   Set left soft margin
+# mm   Put terminal in meta mode
+# mo   Put terminal out of meta mode
+# mp   Turn on protected attribute
+# mr   Start reverse mode
+# MR   Set right soft margin
+# us   Start underlining, for underlining
+
+man() {
+  env \
+    LESS_TERMCAP_mb=$(tput bold; tput setaf 1) \
+    LESS_TERMCAP_md=$(tput setaf 2) \
+    LESS_TERMCAP_me=$(tput sgr0) \
+    LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) \
+    LESS_TERMCAP_se=$(tput rmso; tput sgr0) \
+    LESS_TERMCAP_us=$(tput smul; tput setaf 3) \
+    LESS_TERMCAP_ue=$(tput rmul; tput sgr0) \
+    LESS_TERMCAP_mr=$(tput rev) \
+    LESS_TERMCAP_mh=$(tput dim) \
+    LESS_TERMCAP_ZN=$(tput ssubm) \
+    LESS_TERMCAP_ZV=$(tput rsubm) \
+    LESS_TERMCAP_ZO=$(tput ssupm) \
+    LESS_TERMCAP_ZW=$(tput rsupm) \
+    man -a "$@"
+}
+# for java
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+
+# for hadoop
+export HADOOP_HOME=$HOME/opt/hadoop-2.7.1
+export PATH=$PATH:$HADOOP_HOME/bin
+
+# for pig
+export PIG_HOME=$HOME/opt/pig-0.15.0
+export PATH=$PATH:$PIG_HOME/bin
+
