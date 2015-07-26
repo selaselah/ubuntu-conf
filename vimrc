@@ -162,6 +162,7 @@ autocmd FileType vim set ts=2 sts=2 sw=2 et
 autocmd FileType perl set ts=2 sts=2 sw=2 et
 autocmd FileType markdown set ts=4 sts=4 sw=4 et
 autocmd FileType thrift set ts=2 sts=2 sw=2 et
+autocmd FileType html set ts=2 sts=2 sw=2 et
 
 " :N Place case labels N characters from the indent of the switch().
 "    (default 'shiftwidth').
