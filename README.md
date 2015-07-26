@@ -12,3 +12,17 @@ about sogou pinyin
 ==================
 
 visit [sogou offical website](http://pinyin.sogou.com/linux/).
+
+# about python
+configure
+--prefix=$PREFIX --enable-shared
+to build python component, should install packages:
+    _bz2            libbz2-dev
+    _curses         libncurses5-dev
+    _curses_panel   libncurses5-dev
+    _dbm            --not needed--
+    _gdbm           --not needed--
+    _lzma           liblzma-dev
+    _sqlite3        libsqlite3-dev
+    _tkinter        tk8.6-dev
+    readline        libreadline-dev 
