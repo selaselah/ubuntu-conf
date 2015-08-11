@@ -26,3 +26,5 @@ to build python component, should install packages:
     _sqlite3        libsqlite3-dev
     _tkinter        tk8.6-dev
     readline        libreadline-dev 
+
+to install matplotlib, should also install libfreetype-dev

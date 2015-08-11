@@ -6,6 +6,7 @@ get from git:
 
 # youcompleteme
 
+need cmake g++ python-dev libclang-dev
 run these command:
 
     cd ~/.vim/bundle/YouCompleteMe
