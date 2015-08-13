@@ -59,6 +59,8 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 " pig
 Plugin 'motus/pig.vim'
+" go
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -255,6 +257,9 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#enabled = 0
 " set vim statusbar theme
 let g:airline_theme="molokai"
+" let vim support object-oriented programming
+call airline#parts#define_accent('🐘', 'purple')
+let g:airline_section_a = airline#section#create(["🐘", ' ', "mode", "🐘"])
 
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0

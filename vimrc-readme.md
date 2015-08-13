@@ -11,3 +11,7 @@ run these command:
     cd ~/.vim/bundle/YouCompleteMe
     ./install.sh --clang-completer --system-libclang
 
+# "object oriented programming"
+install ttf-ancient-fonts
+
+add emoji character into airline, see vimrc for more informations
