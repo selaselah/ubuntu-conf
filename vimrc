@@ -99,6 +99,8 @@ set directory=~/.vim/directory//
 colorscheme molokai
 set t_ZH=[3m
 set t_ZR=[23m
+
+" this map return syntax_id_name
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

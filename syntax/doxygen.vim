@@ -583,7 +583,7 @@ endif
     SynLink doxygenHtmlItalicUnderlineBold     doxygenHtmlBoldUnderlineItalic
     SynLink doxygenHtmlLink                    Underlined
 
-    SynLink doxygenParamDirection              StorageClass
+    SynLink doxygenParamDirection              doxygenParam
 
 
     if !exists("doxygen_my_rendering") && !exists("html_my_rendering")
