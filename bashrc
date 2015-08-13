@@ -3,8 +3,7 @@
 # for examples
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
+case $- in *i*) ;;
       *) return;;
 esac
 
@@ -191,3 +190,11 @@ export PATH=$PATH:$HADOOP_HOME/bin
 export PIG_HOME=$HOME/opt/pig-0.15.0
 export PATH=$PATH:$PIG_HOME/bin
 
+# for valgrind
+export PATH=$PATH:$HOME/opt/valgrind-3.10.1/bin
+
+# for go
+export GOROOT=$HOME/opt/go-1.4.2
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin

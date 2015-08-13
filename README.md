@@ -26,3 +26,17 @@ to build python component, should install packages:
     _sqlite3        libsqlite3-dev
     _tkinter        tk8.6-dev
     readline        libreadline-dev 
+
+# about go
+
+## install
+
+download from [golangtc](http://www.golangtc.com/download) or
+[offical website](https://golang.org/dl/)
+
+tar -C $HOME/opt -xzf go$VERSION.$OS-$ARCH.tar.gz
+mv $HOME/opt/go{,-$VERSION}
+
+export GOROOT=$HOME/opt/go-$VERSION
+export PATH=$PATH:$GOROOT/bin
+
