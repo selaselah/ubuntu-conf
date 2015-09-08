@@ -144,6 +144,19 @@ pysearch () {
   find $base_dir -name '*.py' | xargs grep -H --color "$pattern"
 }
 
+gbk2u8 () {
+  case $# in
+    1) file=$1;;
+    *) echo "Usage: gbk2u8 filename" && return ;;
+  esac
+  iconv -fgbk -tutf8 $file -o $file.gbk2u8
+  if [ $? -ne 0 ]; then
+    echo "gbk2u8 convert failed"
+    rm $file.gbk2u8
+  else
+    mv $file.gbk2u8 $file
+  fi
+}
 alias curtime='date +"%Y-%m-%d %H:%M:%S"'
 alias curdate='date +"%H:%M:%S"'
 alias cd='cd -P'
