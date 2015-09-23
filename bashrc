@@ -211,3 +211,38 @@ export GOROOT=$HOME/opt/go-1.4.2
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+gobuild() {
+  file=$1
+  if [[ ! $file =~ .go$ ]]; then
+    echo "wrong file: $file"
+    echo "usage: gobuild xxx.go"
+    return
+  fi
+  file=${file%.go}
+  WORK=/tmp/gobuild
+  mkdir -p $WORK
+  $GOROOT/pkg/tool/linux_amd64/6g -o $WORK/${file}.a ${file}.go
+  $GOROOT/pkg/tool/linux_amd64/6l -o $file $WORK/${file}.a
+}
+
+cbuild() {
+  file=$1
+  if [[ ! $file =~ .c$ ]]; then
+    echo "wrong file: $file"
+    echo "usage: cbuild xxx.c"
+    return
+  fi
+  shift 1
+  gcc -o ${file%.c} $file "$@"
+}
+
+cppbuild() {
+  file=$1
+  if [[ ! $file =~ .cpp$ ]]; then
+    echo "wrong file: $file"
+    echo "usage: cppbuild xxx.cpp"
+    return
+  fi
+  shift 1
+  g++ -o ${file%.cpp} $file "$@"
+}
