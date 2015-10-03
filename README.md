@@ -28,3 +28,5 @@ to build python component, should install packages:
     readline        libreadline-dev 
 
 to install matplotlib, should also install libfreetype-dev
+
+to install pyside, should also install qt4-qmake
