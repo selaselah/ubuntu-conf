@@ -21,6 +21,11 @@ Plugin 'SirVer/ultisnips'
 " Plugin 'vim-scripts/snipMate'
 " Auto complete plugin
 Plugin 'Valloric/YouCompleteMe'
+" c++ highlighting
+Plugin 'octol/vim-cpp-enhanced-highlight'
+" hightlight tag
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 " Plugin 'Shougo/neocomplcache.vim'
 " Plugin 'SuperTab'
 " Code comment and decomment
@@ -34,7 +39,9 @@ Plugin 'Lokaltog/vim-easymotion'
 " write HTML code faster(inspired by zencodeing)
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " ColorScheme
-Plugin 'tomasr/molokai'
+" Plugin 'tomasr/molokai'
+Plugin 'selaselah/molokai'
+
 "Airline
 Plugin 'bling/vim-airline'
 " Utility
@@ -59,6 +66,8 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 " pig
 Plugin 'motus/pig.vim'
+" go
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -95,8 +104,11 @@ set directory=~/.vim/directory//
 " syntax hightlighting
 """"""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme molokai
+let g:molokai_reduce_bold=1
 set t_ZH=[3m
 set t_ZR=[23m
+
+" this map return syntax_id_name
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
@@ -104,51 +116,52 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 let g:load_doxygen_syntax=1
 let g:doxygen_enhanced_color=1
 
-" string -----------------------------------------
-autocmd FileType cpp syn keyword cppType basic_string
-autocmd FileType cpp syn keyword cppType string wstring u16string u32string
-" container --------------------------------------
-" sequence container
-autocmd FileType cpp syn keyword cppType array vector deque forward_list list
-" associative container
-autocmd FileType cpp syn keyword cppType set map multiset multimap string
-" unordered associative container
-autocmd FileType cpp syn keyword cppType unordered_set unordered_map
-      \unordered_multiset unordered_multimap
-" container adaptors
-autocmd FileType cpp syn keyword cppType stack queue priority_queue
-" I/O --------------------------------------------
-" I/O abstraction
-autocmd FileType cpp syn keyword cppType ios_base basic_ios basic_streambuf
-      \basic_istream basic_ostream basic_iostream
-autocmd FileType cpp syn keyword cppType ios wios streambuf wstreambuf
-autocmd FileType cpp syn keyword cppType istream wistream ostream wostream 
-      \iostream wiostream
-" file I/O
-autocmd FileType cpp syn keyword cppType basic_filebuf basic_ifstream
-      \basic_ofstream basic_fstream
-autocmd FileType cpp syn keyword cppType filebuf wfilebuf
-autocmd FileType cpp syn keyword cppType ifstream wifstream ofstream wofstream
-      \fstream wfstream
-" string I/O
-autocmd FileType cpp syn keyword cppType basic_stringbuf basic_istringstream
-      \basic_ostringstream basic_stringstream
-autocmd FileType cpp syn keyword cppType stringbuf wstringbuf
-autocmd FileType cpp syn keyword cppType istringstream wistringstream
-      \ostringstream wostringstream stringstream wstringstream
-" array I/O
-autocmd FileType cpp syn keyword cppType strstreambuf istrstream ostrstream
-      \strstream
-" predefined
-autocmd FileType cpp syn keyword cppIdentifier cin wcin cout wcout cerr wcerr
-      \clog wclog
-" type
-autocmd FileType cpp syn keyword cppType streamoff streamsize fpos
-autocmd FileType cpp syn keyword cppType streampos u16streampos u32streampos
-
-autocmd FileType cpp syn keyword cppOperator hex dec boolalpha noboolalpha endl
-
-highlight default link cppIdentifier Identifier
+highlight link cPreProcTag Constant
+" " string -----------------------------------------
+" autocmd FileType cpp syn keyword cppType basic_string
+" autocmd FileType cpp syn keyword cppType string wstring u16string u32string
+" " container --------------------------------------
+" " sequence container
+" autocmd FileType cpp syn keyword cppType array vector deque forward_list list
+" " associative container
+" autocmd FileType cpp syn keyword cppType set map multiset multimap string
+" " unordered associative container
+" autocmd FileType cpp syn keyword cppType unordered_set unordered_map
+"       \unordered_multiset unordered_multimap
+" " container adaptors
+" autocmd FileType cpp syn keyword cppType stack queue priority_queue
+" " I/O --------------------------------------------
+" " I/O abstraction
+" autocmd FileType cpp syn keyword cppType ios_base basic_ios basic_streambuf
+"       \basic_istream basic_ostream basic_iostream
+" autocmd FileType cpp syn keyword cppType ios wios streambuf wstreambuf
+" autocmd FileType cpp syn keyword cppType istream wistream ostream wostream 
+"       \iostream wiostream
+" " file I/O
+" autocmd FileType cpp syn keyword cppType basic_filebuf basic_ifstream
+"       \basic_ofstream basic_fstream
+" autocmd FileType cpp syn keyword cppType filebuf wfilebuf
+" autocmd FileType cpp syn keyword cppType ifstream wifstream ofstream wofstream
+"       \fstream wfstream
+" " string I/O
+" autocmd FileType cpp syn keyword cppType basic_stringbuf basic_istringstream
+"       \basic_ostringstream basic_stringstream
+" autocmd FileType cpp syn keyword cppType stringbuf wstringbuf
+" autocmd FileType cpp syn keyword cppType istringstream wistringstream
+"       \ostringstream wostringstream stringstream wstringstream
+" " array I/O
+" autocmd FileType cpp syn keyword cppType strstreambuf istrstream ostrstream
+"       \strstream
+" " predefined
+" autocmd FileType cpp syn keyword cppIdentifier cin wcin cout wcout cerr wcerr
+"       \clog wclog
+" " type
+" autocmd FileType cpp syn keyword cppType streamoff streamsize fpos
+" autocmd FileType cpp syn keyword cppType streampos u16streampos u32streampos
+"
+" autocmd FileType cpp syn keyword cppOperator hex dec boolalpha noboolalpha endl
+"
+" highlight default link cppIdentifier Identifier
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Status line config
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -164,9 +177,10 @@ set t_Co=256
 " expandtab = et
 autocmd FileType c set ts=4 sts=4 sw=4 et
 autocmd FileType cpp set ts=2 sts=2 sw=2 et
+autocmd FileType go set ts=4 sts=4 sw=4
 autocmd FileType cmake set ts=2 sts=2 sw=2 et
 autocmd FileType sh set ts=2 sts=2 sw=2 et
-autocmd FileType vim set ts=2 sts=2 sw=2 et
+autocmd FileType vim set ts=4 sts=4 sw=4 et
 autocmd FileType perl set ts=2 sts=2 sw=2 et
 autocmd FileType markdown set ts=4 sts=4 sw=4 et
 autocmd FileType thrift set ts=2 sts=2 sw=2 et
@@ -182,7 +196,7 @@ autocmd FileType html set ts=2 sts=2 sw=2 et
 "    characters from the indent of the label.  (default 'shiftwidth').
 " NN Indent inside C++ namespace N characters extra compared to a
 "    normal block.  (default 0).
-autocmd FileType cpp set cinoptions=:0.5s,=0.5s,g0.5s,h0.5s,N-s,i-s
+autocmd FileType cpp set cinoptions=:0.5s,=0.5s,g0.5s,h0.5s,N-s
 
 autocmd FileType c,cpp set foldmethod=marker
 autocmd FileType python set foldmethod=indent foldlevel=19
@@ -229,17 +243,38 @@ fu! CustomFoldText()
 endf
 autocmd FileType c,cpp set foldtext=CustomFoldText()
 
-" Don't indent namespace and template
-fu! CppNoTemplateIndent()
+" Don't indent template
+function! CppNoTemplateIndent()
   let l:cline_num = line('.')
-  let l:orig_indent = cindent(l:cline_num)
-  if l:orig_indent == 0 | return 0 | endif
-  let l:pline_num = prevnonblank(l:cline_num - 1)
+  let l:cline = getline(l:cline_num)
+  let l:pline_num = prevnonblank(l:cline_num-1)
   let l:pline = getline(l:pline_num)
-  if l:pline =~# '^\s*template' | return l:pline_indent | endif
-  return l:orig_indent
-endf
-"autocmd FileType cpp setlocal indentexpr=CppTemplateIndent()
+  while l:pline =~# '\(^\s*{\s*\|^\s*//\|^\s*/\*\|\*/\s*$\)'
+    " \(^\s*{\s*|^\s*//|^\s*/\*|\*/\s*$)"
+    let l:pline_num = prevnonblank(l:pline_num-1)
+    let l:pline = getline(l:pline_num)
+  endwhile
+  let l:retv = cindent('.')
+  let l:pindent = indent(l:pline_num)
+  if l:pline =~# '^\s*template\s*<.*>\s*$'
+    " prev line is template < >$
+    let l:retv = l:pindent
+  elseif l:pline =~# '^\s*template\s*<.*$'
+    let l:retv = l:pindent+&shiftwidth
+    " prev line is typename T
+  elseif l:pline =~# '\s*\(typename\|class\)\s*.*,\s*$'
+    let l:retv = l:pindent
+    " prev line is >$
+  elseif l:cline =~# '^\s*>\s*$'
+    let l:retv = l:pindent-&shiftwidth
+    " prev line is typename T>
+  elseif l:pline =~# '\s*\(typename\|class\)\s*.*>\s*$'
+    let l:retv = l:pindent-&shiftwidth
+  endif
+  return l:retv
+endfunction
+
+autocmd FileType cpp setlocal indentexpr=CppNoTemplateIndent()
 
 " color folded
 highlight Folded ctermbg=0 ctermfg=220 guibg=#000000 guifg=blue
@@ -255,6 +290,9 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#whitespace#enabled = 0
 " set vim statusbar theme
 let g:airline_theme="molokai"
+" let vim support object-oriented programming
+call airline#parts#define_accent('🐘', 'purple')
+let g:airline_section_a = airline#section#create(["🐘", ' ', "mode", "🐘"])
 
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0

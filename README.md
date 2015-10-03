@@ -28,5 +28,17 @@ to build python component, should install packages:
     readline        libreadline-dev 
 
 to install matplotlib, should also install libfreetype-dev
-
 to install pyside, should also install qt4-qmake
+
+# about go
+
+## install
+
+download from [golangtc](http://www.golangtc.com/download) or
+[offical website](https://golang.org/dl/)
+
+tar -C $HOME/opt -xzf go$VERSION.$OS-$ARCH.tar.gz
+mv $HOME/opt/go{,-$VERSION}
+
+export GOROOT=$HOME/opt/go-$VERSION
+export PATH=$PATH:$GOROOT/bin

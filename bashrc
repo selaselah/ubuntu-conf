@@ -3,8 +3,7 @@
 # for examples
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
+case $- in *i*) ;;
       *) return;;
 esac
 
@@ -145,6 +144,19 @@ pysearch () {
   find $base_dir -name '*.py' | xargs grep -H --color "$pattern"
 }
 
+gbk2u8 () {
+  case $# in
+    1) file=$1;;
+    *) echo "Usage: gbk2u8 filename" && return ;;
+  esac
+  iconv -fgbk -tutf8 $file -o $file.gbk2u8
+  if [ $? -ne 0 ]; then
+    echo "gbk2u8 convert failed"
+    rm $file.gbk2u8
+  else
+    mv $file.gbk2u8 $file
+  fi
+}
 alias curtime='date +"%Y-%m-%d %H:%M:%S"'
 alias curdate='date +"%H:%M:%S"'
 alias cd='cd -P'
@@ -191,3 +203,46 @@ export PATH=$PATH:$HADOOP_HOME/bin
 export PIG_HOME=$HOME/opt/pig-0.15.0
 export PATH=$PATH:$PIG_HOME/bin
 
+# for valgrind
+export PATH=$PATH:$HOME/opt/valgrind-3.10.1/bin
+
+# for go
+export GOROOT=$HOME/opt/go-1.4.2
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+gobuild() {
+  file=$1
+  if [[ ! $file =~ .go$ ]]; then
+    echo "wrong file: $file"
+    echo "usage: gobuild xxx.go"
+    return
+  fi
+  file=${file%.go}
+  WORK=/tmp/gobuild
+  mkdir -p $WORK
+  $GOROOT/pkg/tool/linux_amd64/6g -o $WORK/${file}.a ${file}.go
+  $GOROOT/pkg/tool/linux_amd64/6l -o $file $WORK/${file}.a
+}
+
+cbuild() {
+  file=$1
+  if [[ ! $file =~ .c$ ]]; then
+    echo "wrong file: $file"
+    echo "usage: cbuild xxx.c"
+    return
+  fi
+  shift 1
+  gcc -o ${file%.c} $file "$@"
+}
+
+cppbuild() {
+  file=$1
+  if [[ ! $file =~ .cpp$ ]]; then
+    echo "wrong file: $file"
+    echo "usage: cppbuild xxx.cpp"
+    return
+  fi
+  shift 1
+  g++ -o ${file%.cpp} $file "$@"
+}
