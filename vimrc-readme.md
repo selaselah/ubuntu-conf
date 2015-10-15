@@ -10,7 +10,7 @@ need cmake g++ python-dev libclang-dev
 run these command:
 
     cd ~/.vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer --system-libclang
+    ./install.py --clang-completer --system-libclang
 
 # "object oriented programming"
 install ttf-ancient-fonts

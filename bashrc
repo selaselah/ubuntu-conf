@@ -207,7 +207,7 @@ export PATH=$PATH:$PIG_HOME/bin
 export PATH=$PATH:$HOME/opt/valgrind-3.10.1/bin
 
 # for go
-export GOROOT=$HOME/opt/go-1.4.2
+export GOROOT=$HOME/opt/go-1.5.1
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
@@ -221,8 +221,8 @@ gobuild() {
   file=${file%.go}
   WORK=/tmp/gobuild
   mkdir -p $WORK
-  $GOROOT/pkg/tool/linux_amd64/6g -o $WORK/${file}.a ${file}.go
-  $GOROOT/pkg/tool/linux_amd64/6l -o $file $WORK/${file}.a
+  $GOROOT/pkg/tool/linux_amd64/compile -o $WORK/${file}.a ${file}.go
+  $GOROOT/pkg/tool/linux_amd64/link -o $file $WORK/${file}.a
 }
 
 cbuild() {
