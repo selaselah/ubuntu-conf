@@ -9,64 +9,68 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " plugins
-" File Tree plugin NERDTree
+" [V] File Tree plugin NERDTree
 Plugin 'scrooloose/nerdtree'
-" File switch from on to another
+" [V] File switch from on to another
 Plugin 'kien/ctrlp.vim'
-"snippets
+" [V] snippets
 Plugin 'SirVer/ultisnips'
-" Plugin 'vim-scripts/snipMate'
-" Auto complete plugin
+" [V] Auto complete plugin
 Plugin 'Valloric/YouCompleteMe'
-" c++ highlighting
+" [V] c++ highlighting
 Plugin 'octol/vim-cpp-enhanced-highlight'
-" hightlight tag
+" [V] hightlight tag
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+" [X] contained in YouCompleteME
 " Plugin 'Shougo/neocomplcache.vim'
 " Plugin 'SuperTab'
-" Code comment and decomment
+" [V] Code comment and decomment
 Plugin 'tomtom/tcomment_vim'
+" [V] Tagbar
 Plugin 'majutsushi/tagbar'
-" Static syntax checking
+" [V] Static syntax checking
 Plugin 'scrooloose/syntastic'
-" Plugin 'tpope/vim-rails'
+" [V] git
 Plugin 'tpope/vim-fugitive'
+" [V] EasyMotion
 Plugin 'Lokaltog/vim-easymotion'
-" write HTML code faster(inspired by zencodeing)
+" [V] write HTML code faster(inspired by zencodeing)
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" ColorScheme
+" [V] ColorScheme, switch to my fork
 " Plugin 'tomasr/molokai'
 Plugin 'selaselah/molokai'
 
-"Airline
+" [V] Airline
 Plugin 'bling/vim-airline'
-" Utility
+" [X] Utility
 " Plugin 'repeat.vim'
+" [V] vim-surround
 Plugin 'tpope/vim-surround'
+" [V] goyo mode
 Plugin 'junegunn/goyo.vim'
-" Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-markdown'
-" vimdeck depend on it
+" [V] vimdeck depend on it
 Plugin 'SyntaxRange'
-" python indent
+" [V] python indent
 Plugin 'hynek/vim-python-pep8-indent'
-" csv
-Plugin 'chrisbra/csv.vim'
-" ansi color
+" [V] ansi color
 Plugin 'powerman/vim-plugin-AnsiEsc'
-" thrift
+" [V] Markdown
+Plugin 'tpope/vim-markdown'
+" [V] csv
+Plugin 'chrisbra/csv.vim'
+" [V] thrift
 Plugin 'solarnz/thrift.vim'
-" rust
+" [V] rust
 Plugin 'rust-lang/rust.vim'
-" toml
+" [V] toml
 Plugin 'cespare/vim-toml'
-" pig
+" [V] pig
 Plugin 'motus/pig.vim'
-" go
+" [V] go
 Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
