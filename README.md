@@ -1,17 +1,21 @@
-ubuntu-conf
-===========
+# ubuntu-conf
 
-for airline vim-plugin
+## mount another disk
+blkid to get UUID
+add line in /etc/fstab
+    field#1 dev: UUID=xxxxxxx
+    field#2 mount point: /home
+    field#3 fs type: ext4
+    field#4 opts: nofail
+    field#5 dump flag: 0
+    field#6 fsck seq: 2
 
-wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
-fc-cache -vf ~/.fonts
-mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-
-about sogou pinyin
-==================
+# about sogou pinyin
 
 visit [sogou offical website](http://pinyin.sogou.com/linux/).
+
+    dpkg -i sougoupinyin_*.deb
+    apt-get install -f
 
 # about python
 configure
