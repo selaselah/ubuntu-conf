@@ -10,14 +10,14 @@ add line in /etc/fstab
     field#5 dump flag: 0
     field#6 fsck seq: 2
 
-# about sogou pinyin
+## about sogou pinyin
 
 visit [sogou offical website](http://pinyin.sogou.com/linux/).
 
     dpkg -i sougoupinyin_*.deb
     apt-get install -f
 
-# about python
+## about python
 configure
 --prefix=$PREFIX --enable-shared
 to build python component, should install packages:
@@ -34,9 +34,21 @@ to build python component, should install packages:
 to install matplotlib, should also install libfreetype-dev
 to install pyside, should also install qt4-qmake
 
-# about go
+## use pypi mirror
+create ~/.pip/pip.conf
+    [global]
+    index-url = http://mirrors.aliyun.com/pypi/simple/
+    [install]
+    use-mirrors = true
+    mirrors = http://mirrors.aliyun.com/pypi/
+    trusted-host = mirrors.aliyun.com
 
-## install
+## install scipy
+dependencies: liblapack-dev, libopenblas-dev, gfortran
+
+## install matplotlib
+dependencies: libpng12-dev, libfreetype6-dev
+## install go
 
 download from [golangtc](http://www.golangtc.com/download) or
 [offical website](https://golang.org/dl/)
@@ -44,5 +56,10 @@ download from [golangtc](http://www.golangtc.com/download) or
 tar -C $HOME/opt -xzf go$VERSION.$OS-$ARCH.tar.gz
 mv $HOME/opt/go{,-$VERSION}
 
-export GOROOT=$HOME/opt/go-$VERSION
-export PATH=$PATH:$GOROOT/bin
+## cherrytree color
+黄色 #FFFF00
+
+## add proxy cert
+sudo cp foo.crt /usr/local/share/ca-certificates/extra/foo.crt
+sudo dpkg-reconfigure ca-certificates
+

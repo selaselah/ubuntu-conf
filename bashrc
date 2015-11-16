@@ -225,6 +225,9 @@ gobuild() {
   $GOROOT/pkg/tool/linux_amd64/link -o $file $WORK/${file}.a
 }
 
+# for bin
+export PATH=$HOME/opt/bin:$PATH
+
 cbuild() {
   file=$1
   if [[ ! $file =~ .c$ ]]; then
@@ -233,7 +236,7 @@ cbuild() {
     return
   fi
   shift 1
-  gcc -o ${file%.c} $file "$@"
+  gcc -g -o ${file%.c} $file "$@"
 }
 
 cppbuild() {
@@ -244,5 +247,5 @@ cppbuild() {
     return
   fi
   shift 1
-  g++ -o ${file%.cpp} $file "$@"
+  g++ -g -o ${file%.cpp} $file "$@"
 }
