@@ -121,7 +121,7 @@ cppsearch () {
   esac
   echo "start search..."
   find $base_dir -name '*.h' -o -name '*.cpp' -o -name '*.hpp' -o -name '*.cxx' \
-    -o -name '*.c' | xargs grep -H --color "$pattern"
+    -o -name '*.c' -o -name '*.cc' | xargs grep -H --color "$pattern"
 }
 
 cssearch () {
@@ -202,6 +202,10 @@ export PATH=$PATH:$HADOOP_HOME/bin
 # for pig
 export PIG_HOME=$HOME/opt/pig-0.15.0
 export PATH=$PATH:$PIG_HOME/bin
+
+# for ant
+export ANT_HOME=$HOME/opt/apache-ant-1.9.6
+export PATH=$PATH:$ANT_HOME/bin
 
 # for valgrind
 export PATH=$PATH:$HOME/opt/valgrind-3.10.1/bin
