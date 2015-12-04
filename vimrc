@@ -74,6 +74,7 @@ Plugin 'motus/pig.vim'
 Plugin 'fatih/vim-go'
 " [V] javascript
 Plugin 'pangloss/vim-javascript'
+Plugin 'othree/javascript-libraries-syntax.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

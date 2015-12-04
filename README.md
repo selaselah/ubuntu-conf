@@ -63,3 +63,7 @@ mv $HOME/opt/go{,-$VERSION}
 sudo cp foo.crt /usr/local/share/ca-certificates/extra/foo.crt
 sudo dpkg-reconfigure ca-certificates
 
+## install oracle jdk
+add-apt-repository ppa:webupd8team/java
+apt-get install oracle-java7-installer
+
