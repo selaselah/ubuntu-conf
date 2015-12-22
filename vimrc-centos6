@@ -12,28 +12,28 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " plugins
-" [V] File Tree plugin NERDTree
-Plugin 'scrooloose/nerdtree'
-" [V] File switch from on to another
-Plugin 'kien/ctrlp.vim'
-" [V] snippets
-Plugin 'SirVer/ultisnips'
-" [V] Auto complete plugin
-Plugin 'Valloric/YouCompleteMe'
-" [V] c++ highlighting
-Plugin 'octol/vim-cpp-enhanced-highlight'
-" [V] hightlight tag
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+" [X] File Tree plugin NERDTree
+" Plugin 'scrooloose/nerdtree'
+" [X] File switch from on to another
+" Plugin 'kien/ctrlp.vim'
+" [X] snippets
+" Plugin 'SirVer/ultisnips'
+" [X] Auto complete plugin
+" Plugin 'Valloric/YouCompleteMe'
+" [X] c++ highlighting
+" Plugin 'octol/vim-cpp-enhanced-highlight'
+" [X] hightlight tag
+" Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-easytags'
 " [X] contained in YouCompleteME
 " Plugin 'Shougo/neocomplcache.vim'
 " Plugin 'SuperTab'
-" [V] Code comment and decomment
-Plugin 'tomtom/tcomment_vim'
-" [V] Tagbar
-Plugin 'majutsushi/tagbar'
-" [V] Static syntax checking
-Plugin 'scrooloose/syntastic'
+" [X] Code comment and decomment
+" Plugin 'tomtom/tcomment_vim'
+" [X] Tagbar
+" Plugin 'majutsushi/tagbar'
+" [X] Static syntax checking
+" Plugin 'scrooloose/syntastic'
 " [V] git
 Plugin 'tpope/vim-fugitive'
 " [V] EasyMotion
@@ -85,12 +85,13 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " miscellaneous
 """"""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a
+set mouse=
 set incsearch
 set hlsearch
 
 " set vertical bar on col 81
-set colorcolumn=81
+" invalid at centos6
+" set colorcolumn=81
 highlight ColorColumn ctermbg=52 guibg=#5f0000
 
 " date & time funtion
@@ -300,8 +301,8 @@ let g:airline#extensions#whitespace#enabled = 0
 " set vim statusbar theme
 let g:airline_theme="molokai"
 " let vim support object-oriented programming
-call airline#parts#define_accent('🐘', 'purple')
-let g:airline_section_a = airline#section#create(["🐘", ' ', "mode", "🐘"])
+" call airline#parts#define_accent('🐘', 'purple')
+" let g:airline_section_a = airline#section#create(["🐘", ' ', "mode", "🐘"])
 
 " YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
