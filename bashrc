@@ -194,6 +194,9 @@ man() {
 }
 # for java
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+# for IDEA
+IDEA_VER=143.1184.17
+export PATH=$PATH:$HOME/opt/idea-IC-$IDEA_VER/bin
 
 # for hadoop
 export HADOOP_HOME=$HOME/opt/hadoop-2.7.1
