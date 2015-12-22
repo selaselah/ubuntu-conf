@@ -67,3 +67,39 @@ sudo dpkg-reconfigure ca-certificates
 add-apt-repository ppa:webupd8team/java
 apt-get install oracle-java7-installer
 
+## install node js
+see [](https://github.com/nodesource/distributions)
+curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+
+## install cherrytree
+add-apt-repository ppa:vincent-c/cherrytree
+
+## sudo without passwd
+man 5 sudoers
+visudo file 有如下 entry:
+alias
+user specification
+还可以使用 default 更改配置
+这里只配置 user specification
+
+    User_Spec ::= User_List Host_List '=' Cmnd_Spec_List \
+                  (':' Host_List '=' Cmnd_Spec_List)*
+
+以`chendongxiao ALL=(ALL) NOPASSWD: /usr/sbin/rabbitmqctl`为例:
+    User_List <= chendongxiao
+    Host_List <= ALL
+
+    只有一个 Cmnd_Spec_List <= (ALL) NOPASSWD: /usr/sbin/rabbitmqctl
+
+    Cmnd_Spec_List ::= Cmnd_Spec |
+                       Cmnd_Spec ',' Cmnd_Spec_List
+
+    只有一个 Cmnd_Spec <= (ALL) NOPASSWD: /usr/sbin/rabbitmqctl
+    如果要指派多个 Cmnd_Spec，后续的 Runas_Spec SELinux_Spec Tag_Spec 可以省略
+
+    Cmnd_Spec ::= Runas_Spec? SELinux_Spec? Tag_Spec* Cmnd
+
+    Runas_Spec <= (ALL)
+    Tag_Spec <= NOPASSWD:
+    Cmnd <= /usr/sbin/rabbitmqctl
+
